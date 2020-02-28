@@ -4,8 +4,9 @@ var MouseClick = 0
 var X = []
 var friction = 0.99
 function setup() {
-  createCanvas(400, 400);
+  var canvas = createCanvas(400, 400);
   background(70, 39, 73)
+  canvas.parent('sketch-div')
   for(var c = 0; c<Math.PI*2; c+=Math.PI/7.5){
     append(X, sin(c)*20+200)
     append(X, cos(c)*20+200)
@@ -99,10 +100,10 @@ class Ball{
     if(MouseClick>1){
       this.ySpeed += this.gravity
       this.gravity+= 0.02
-      if(this.y>400-this.Width/20 || this.y<this.Width/20){
-        this.ySpeed = 0
-        this.gravity = this.gravity * -0.95
-        this.y = 400
+      if(this.y>400-this.Width/20){
+        this.ySpeed = this.ySpeed  * -0.2
+        this.gravity = this.gravity * -0.05
+        this.y = 400-this.Width/20
       }
     }
   }
@@ -117,7 +118,7 @@ function mousePressed(){
 
 
 function draw() {
-  background(70, 39, 73,70);
+  background(70, 39, 73);
   noStroke()
   fill(255)
   if(MouseClick == 1){
@@ -125,7 +126,6 @@ function draw() {
       b+= 0.02
     }
   }
-  text(X.length/2, 200,200)
   balls.forEach(ball=>{
     ball.move()
     ball.bounce()

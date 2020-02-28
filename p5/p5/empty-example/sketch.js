@@ -101,7 +101,7 @@ class Ball{
       this.gravity+= 0.02
       if(this.y>400-this.Width/20 || this.y<this.Width/20){
         this.ySpeed = 0
-        this.gravity = this.gravity * -0.9
+        this.gravity = this.gravity * -0.95
         this.y = 400
       }
     }
